@@ -1,0 +1,22 @@
+<div>
+
+  <div class="topnav" style="height: 7.5vh; min-height: 60px;">
+    <span *ngIf='!isLoggedIn'>Бюро Списания Долгов</span>
+    <span *ngIf='isLoggedIn'>{{currentUser.name}}</span>
+    <a [routerLink]="['/account']"  routerLinkActive='active' [routerLinkActiveOptions]="{ exact: true }" *ngIf='isLoggedIn'> (Редактировать) </a>
+    <button mat-flat-button color="warn" (click)='logout()' *ngIf='isLoggedIn'> Выйти </button>
+  </div>
+
+  <router-outlet></router-outlet>
+
+  <div style="margin-top: -100px; height: 100px;">
+    <c-toaster class="p-3" placement="right-end">
+      <c-toast [visible]="visible" >
+        <c-toast-header  style="background-color:  lightcoral; color: black"> {{header}} </c-toast-header>
+        <c-toast-body  style="background-color:  lightcoral;">
+          <span>{{message}}</span>
+        </c-toast-body>
+      </c-toast>
+    </c-toaster>        
+  </div>
+</div>

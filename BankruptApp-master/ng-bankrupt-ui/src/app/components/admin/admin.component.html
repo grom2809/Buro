@@ -1,0 +1,68 @@
+<div style="display: flex; background-color: darkgray;">
+
+    <div style="flex: 2; padding: 10px">
+                <mat-form-field style="width: 100%; height: 10vh">
+                    <input matInput (keyup)="applyFilter($event.target)" placeholder="Введите слово для поиска">
+                </mat-form-field>
+                <mat-sidenav-container>
+                    <mat-sidenav-content>
+                        <div style="height: 80vh;">
+                            <mat-table [dataSource]="usersDs">
+                                <ng-container matColumnDef="id">
+                                    <mat-header-cell *matHeaderCellDef> Номер </mat-header-cell>
+                                    <mat-cell *matCellDef="let user"> {{user.id}} </mat-cell>
+                                </ng-container>
+                        
+                                <ng-container matColumnDef="name">
+                                    <mat-header-cell *matHeaderCellDef> ФИО </mat-header-cell>
+                                    <mat-cell *matCellDef="let user"> {{user.name}} </mat-cell>
+                                </ng-container>
+                        
+                                <ng-container matColumnDef="birthdate">
+                                    <mat-header-cell *matHeaderCellDef> Дата рождения </mat-header-cell>
+                                    <mat-cell *matCellDef="let user"> {{user.birthdate}} </mat-cell>
+                                </ng-container>
+                        
+                                <ng-container matColumnDef="email">
+                                    <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                                    <mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
+                                </ng-container>
+                        
+                                <mat-header-row *matHeaderRowDef="usersColumns; sticky: true;"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: usersColumns;" (click)="getUserDocuments(row)"></mat-row>
+                            </mat-table>
+                        </div>
+                </mat-sidenav-content>
+            </mat-sidenav-container>
+    </div> 
+    
+    <div style="flex: 1; padding: 10px">
+        <i class='fa fa-file-pdf-o blue-color'></i>
+        <mat-card>
+            <mat-table [dataSource]="documentsDs" style="height: 90vh;">
+                <ng-container matColumnDef="docName">
+                    <mat-header-cell *matHeaderCellDef> {{getSelectedUserName()}} </mat-header-cell>
+                    <mat-cell *matCellDef="let document"> 
+                        <p> {{document.fileName}} </p>
+                        <p style="color: gray; margin-left: 20px; font-size: smaller;">{{document.date}}</p>
+                    </mat-cell>
+                </ng-container>
+        
+                <mat-header-row *matHeaderRowDef="documentsColumns; sticky: true;"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: documentsColumns;" (click)="getUserDocument(row)"></mat-row>
+            </mat-table>
+        </mat-card>
+    </div>
+</div>
+
+
+<div style="margin-top: -100px; height: 100px; overflow-y: auto;">
+    <c-toaster class="p-3" placement="right-end">
+      <c-toast [visible]="visible" >
+        <c-toast-header  style="background-color:  lightcoral; color: black"> {{header}} </c-toast-header>
+        <c-toast-body  style="background-color:  lightcoral;">
+          <span>{{message}}</span>
+        </c-toast-body>
+      </c-toast>
+    </c-toaster>        
+  </div>

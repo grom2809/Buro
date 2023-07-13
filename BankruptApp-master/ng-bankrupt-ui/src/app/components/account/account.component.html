@@ -1,0 +1,64 @@
+<div style="display: flex;  height: 90vh;">
+    <div style="flex: 1.5;">
+    </div> 
+
+    <div style="flex: 2; padding: 10px; background-color: white">
+        <mat-card style="height: 80vh;" class="margin-form">
+            <mat-form-field style="margin-top: 20px;">
+              <mat-label>ФИО</mat-label>
+              <input matInput required id='name' minlength="3" [(ngModel)]="currentUser.name" #name="ngModel">
+              <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                <div *ngIf="name.errors?.['required']" style="color: lightcoral"> Поле не должно быть пустым </div>
+                <div *ngIf="name.errors?.['minlength']" style="color: lightcoral"> ФИО должно состоять минимум из трёх символов</div>
+              </div>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Дата рождения</mat-label>
+              <input matInput [matDatepicker]="picker" [max]="maxDate" readonly required (focus)="picker.open(); datePickerFocus()" [value]="dateToPass" #birthdate>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <div *ngIf="birthdate.value=='' && isDatePickerErrorShowed">
+                <div style="color: lightcoral"> Поле не должно быть пустым </div>
+              </div>
+            </mat-form-field> 
+                         
+            <mat-form-field>
+              <mat-label>Почта (email)</mat-label>
+              <input type="email" matInput placeholder="user@email.com" [(ngModel)]="currentUser.email" #email="ngModel" required id='email'
+                pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
+              <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                <div *ngIf="email.errors?.['required']" style="color: lightcoral"> Поле не должно быть пустым </div>
+                <div *ngIf="!email.errors?.['required']" style="color: lightcoral"> Некорректный email</div>
+              </div>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Пароль</mat-label>
+                <input matInput #password placeholder="Оставьте поле пустым, если не хотите менять пароль"> 
+            </mat-form-field>
+
+            <button mat-flat-button color="primary" (click)='updateUser(name.value, birthdate.value, email.value, password.value)' 
+                [disabled]="email.invalid || birthdate.value=='' || name.invalid" class="margin-form-button">Изменить</button>
+            
+            <button mat-raised-button color="warn" (click)='deleteAccount()' class="margin-form-button">Удалить аккаунт</button>
+
+            <button mat-button color="link" (click)='back()' class="margin-form-button">Назад</button>
+          </mat-card>
+    </div> 
+
+    <div style="flex: 1.5;">
+    </div> 
+  </div> 
+
+  
+<div style="margin-top: -100px; height: 100px;">
+  <c-toaster class="p-3" placement="right-end">
+    <c-toast [visible]="visible" >
+      <c-toast-header  style="background-color:  lightcoral; color: black"> {{header}} </c-toast-header>
+      <c-toast-body  style="background-color:  lightcoral;">
+        <span>{{message}}</span>
+      </c-toast-body>
+    </c-toast>
+  </c-toaster>        
+</div>

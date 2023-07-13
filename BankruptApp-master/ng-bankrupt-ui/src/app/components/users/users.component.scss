@@ -1,0 +1,33 @@
+.mat-row, .mat-header-row{
+    min-width: 280px;
+    width: 100%
+}
+
+.mat-mdc-row .mat-mdc-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+  }
+
+  .mat-mdc-row:hover .mat-mdc-cell {
+    border-color: currentColor;
+  }
+
+.w-25{
+    width: 25vw;
+    max-width: 25vw;
+}
+
+.justify-center-content{
+  justify-content: center;
+}
+
+.caption-text{
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  margin-right: -50%; 
+  transform: translate(-50%, -50%); 
+  color: gray;
+  font-size: medium;
+}

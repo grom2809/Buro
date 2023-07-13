@@ -1,0 +1,63 @@
+<div style="display: flex; height: 92.5vh; background-color: darkgray;" >
+
+    <div style="flex: 1; padding: 10px">
+        <mat-form-field style="width: 100%">
+            <input matInput (keyup)="applyFilter($event.target)" placeholder="Введите слово для поиска">
+        </mat-form-field>
+
+        <div style="margin-bottom:15px;">
+            <div>
+              <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
+              <button mat-raised-button color="primary" type="button" style="width: 100%; padding: 5px; height: 5vh;" (click)="file.click()">Загрузить файл</button>
+            </div>
+          </div>
+    </div> 
+    
+    <div style="flex: 2; padding: 10px" *ngIf='documentsDs.data.length > 0'>
+        <mat-card>
+            <mat-table [dataSource]="documentsDs" style="overflow-y: auto; height: 88vh; padding:0.5vw;">
+                <ng-container matColumnDef="docName">
+                    <mat-header-cell *matHeaderCellDef [ngClass]="'w-25'"> Документ </mat-header-cell>
+                    <mat-cell *matCellDef="let document" [ngClass]="'w-25'"> {{document.fileName}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="docDate">
+                    <mat-header-cell *matHeaderCellDef [ngClass]="'justify-center-content'"> Дата добавления </mat-header-cell>
+                    <mat-cell *matCellDef="let document" [ngClass]="'justify-center-content'"> {{document.date}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="docDelete">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell *matCellDef="let document" [ngClass]="'justify-center-content'"> 
+                        <button mat-button color="primary" type="button" style="margin-right: 15px;" (click)="getUserDocument(document)">Скачать</button> 
+                        <button mat-button color="warn" type="button" (click)="deleteDocument(document)">Удалить</button> 
+                    </mat-cell>
+                </ng-container>
+        
+                <mat-header-row *matHeaderRowDef="documentsColumns; sticky: true;"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: documentsColumns;"></mat-row>
+            </mat-table>
+        </mat-card>
+    </div> 
+
+    <div style="flex: 2; padding: 10px;" *ngIf='documentsDs.data.length == 0'>
+        <div style="background-color: white; height: 90vh;">
+            <div class="caption-text">Здесь будут отображаться ваши документы</div>
+        </div>
+    </div> 
+
+    <div style="flex: 1;">
+    </div> 
+</div>
+
+
+<div style="margin-top: -100px; height: 100px;">
+    <c-toaster class="p-3" placement="right-end">
+      <c-toast [visible]="visible" >
+        <c-toast-header  style="background-color:  lightcoral; color: black"> {{header}} </c-toast-header>
+        <c-toast-body  style="background-color:  lightcoral;">
+          <span>{{message}}</span>
+        </c-toast-body>
+      </c-toast>
+    </c-toaster>        
+  </div>

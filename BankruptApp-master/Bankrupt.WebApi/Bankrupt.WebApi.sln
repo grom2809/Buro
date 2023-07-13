@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bankrupt.WebApi", "Bankrupt.WebApi\Bankrupt.WebApi.csproj", "{6E8841BC-7CBB-4058-A13F-3A3CDE3DF397}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bankrupt.Core", "Bankrupt.Core\Bankrupt.Core.csproj", "{137E3703-E0AB-4AAD-ACCC-C7C317920B7C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bankrupt.Auth.WebApi", "Bankrupt.Auth.WebApi\Bankrupt.Auth.WebApi.csproj", "{B15B8027-F8DC-4FEE-915D-AFDC141130DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bankrupt.Auth.Common", "Bankrupt.Auth.Common\Bankrupt.Auth.Common.csproj", "{E95F00D4-90E9-49AF-9429-2EBA626334CB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bankrupt.Data", "Bankrupt.Data\Bankrupt.Data.csproj", "{8A1A8674-0E3B-45D9-8318-49E446BA3454}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bankrupt.WebApi.Admin", "Bankrupt.WebApi.Admin\Bankrupt.WebApi.Admin.csproj", "{9DA33B4F-8545-4D34-84E1-749B44469F2D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E8841BC-7CBB-4058-A13F-3A3CDE3DF397}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E8841BC-7CBB-4058-A13F-3A3CDE3DF397}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E8841BC-7CBB-4058-A13F-3A3CDE3DF397}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E8841BC-7CBB-4058-A13F-3A3CDE3DF397}.Release|Any CPU.Build.0 = Release|Any CPU
+		{137E3703-E0AB-4AAD-ACCC-C7C317920B7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{137E3703-E0AB-4AAD-ACCC-C7C317920B7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{137E3703-E0AB-4AAD-ACCC-C7C317920B7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{137E3703-E0AB-4AAD-ACCC-C7C317920B7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B15B8027-F8DC-4FEE-915D-AFDC141130DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B15B8027-F8DC-4FEE-915D-AFDC141130DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B15B8027-F8DC-4FEE-915D-AFDC141130DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B15B8027-F8DC-4FEE-915D-AFDC141130DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E95F00D4-90E9-49AF-9429-2EBA626334CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E95F00D4-90E9-49AF-9429-2EBA626334CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E95F00D4-90E9-49AF-9429-2EBA626334CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E95F00D4-90E9-49AF-9429-2EBA626334CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A1A8674-0E3B-45D9-8318-49E446BA3454}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A1A8674-0E3B-45D9-8318-49E446BA3454}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A1A8674-0E3B-45D9-8318-49E446BA3454}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A1A8674-0E3B-45D9-8318-49E446BA3454}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DA33B4F-8545-4D34-84E1-749B44469F2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DA33B4F-8545-4D34-84E1-749B44469F2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DA33B4F-8545-4D34-84E1-749B44469F2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DA33B4F-8545-4D34-84E1-749B44469F2D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D0F61CB9-2148-4DE5-8860-41FD4EEB70D3}
+	EndGlobalSection
+EndGlobal

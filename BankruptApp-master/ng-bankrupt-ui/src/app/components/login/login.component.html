@@ -1,0 +1,85 @@
+<div style="display: flex; height: 90vh; background-color: white">
+    <div style="flex: 1.5;">
+    </div> 
+
+    <div style="flex: 2; padding: 10px; background-color: white">
+      <mat-card>
+        <mat-tab-group class="margin-form-button"> 
+          <mat-tab label = "Войти"> 
+            <mat-card style="height: 80vh;">
+              <mat-form-field style="margin-top: 20px;">
+                <mat-label>Почта (email)</mat-label>
+                <input type="email" matInput placeholder="user@email.com" #email>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Пароль</mat-label>
+                <input type="password" matInput #password>
+              </mat-form-field>
+              <button mat-flat-button color="primary" (click)='login(email.value, password.value)'>Войти</button>
+            </mat-card>
+          </mat-tab>
+      
+          <mat-tab label = "Регистрация"> 
+            <mat-card style="height: 80vh;">
+              <mat-form-field style="margin-top: 20px;">
+                <mat-label>ФИО</mat-label>
+                <input matInput required id='name' minlength="3" [(ngModel)]="regUser.name" #name="ngModel">
+                <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                  <div *ngIf="name.errors?.['required']" style="color: lightcoral"> Поле не должно быть пустым </div>
+                  <div *ngIf="name.errors?.['minlength']" style="color: lightcoral"> ФИО должно состоять минимум из трёх символов</div>
+                </div>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Дата рождения</mat-label>
+                <input matInput [matDatepicker]="picker" [max]="maxDate" readonly required (focus)="picker.open(); datePickerFocus()" #birthdate>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <div *ngIf="birthdate.value=='' && isDatePickerErrorShowed">
+                  <div style="color: lightcoral"> Поле не должно быть пустым </div>
+                </div>
+              </mat-form-field> 
+                           
+              <mat-form-field>
+                <mat-label>Почта (email)</mat-label>
+                <input type="email" matInput placeholder="user@email.com" [(ngModel)]="regUser.email" #emailReg="ngModel" required id='emailReg'
+                  pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
+                <div *ngIf="emailReg.invalid && (emailReg.dirty || emailReg.touched)">
+                  <div *ngIf="emailReg.errors?.['required']" style="color: lightcoral"> Поле не должно быть пустым </div>
+                  <div *ngIf="!emailReg.errors?.['required']" style="color: lightcoral"> Некорректный email</div>
+                </div>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Пароль</mat-label>
+                <input matInput required minlength="5" [(ngModel)]="regUser.password" #passwordReg="ngModel" id='passwordReg'>
+                <div *ngIf="passwordReg.invalid && (passwordReg.dirty || passwordReg.touched)">
+                  <div *ngIf="passwordReg.errors?.['required']" style="color: lightcoral"> Поле не должно быть пустым </div>
+                  <div *ngIf="passwordReg.errors?.['minlength']" style="color: lightcoral"> Пароль должен состоять минимум из пяти символов</div>
+                </div>
+              </mat-form-field>
+
+              <button mat-flat-button color="primary" (click)='register(name.value, birthdate.value, emailReg.value, passwordReg.value)'
+              [disabled]="passwordReg.invalid || emailReg.invalid || birthdate.value=='' || name.invalid">Регистрация</button>
+            </mat-card>
+          </mat-tab>
+      </mat-tab-group>
+      </mat-card>
+    </div> 
+
+    <div style="flex: 1.5;">
+    </div> 
+  </div> 
+
+
+  <div style="margin-top: -100px; height: 100px;">
+    <c-toaster class="p-3" placement="right-end">
+      <c-toast [visible]="visible" >
+        <c-toast-header  style="background-color:  lightcoral; color: black"> {{header}} </c-toast-header>
+        <c-toast-body  style="background-color:  lightcoral;">
+          <span>{{message}}</span>
+        </c-toast-body>
+      </c-toast>
+    </c-toaster>        
+  </div>
+
